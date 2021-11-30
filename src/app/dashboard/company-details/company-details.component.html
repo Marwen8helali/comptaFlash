@@ -1,0 +1,72 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Company details</h1>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/admin-employees" class="btn btn-primary">Retour</a>
+    </p>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">company name</h6>
+        </div>
+        <div class="card-body">
+            <div class="card" >
+              
+                <ul class="list-group list-group-flush" >
+
+                  <li class="list-group-item"><strong>Raison  : </strong> {{company.country}}</li>
+                  <li class="list-group-item"><strong>Lieu : </strong> {{company.country}}</li>
+                  <li class="list-group-item"><strong>activite : </strong>{{company.activity}}</li>
+                  <li class="list-group-item"><strong>address : </strong>{{company.address}}</li>
+                  <li class="list-group-item"><strong>E-mail : </strong>{{company.email}}</li>
+                  <li class="list-group-item"><strong>Tél : </strong>{{company.tel}}</li>
+
+                </ul>
+              </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Plan comptable</h6>
+
+            <a class="btn btn-sm btn-primary" [routerLink]="'/dashboard/home/admin-company/'+company.id+'/add-plan-comptable' ">Ajouter</a>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Key</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of company.plans">
+                        <td>{{p.id}}</td>
+                        <td>{{p.keyCompte}}</td>
+                        <td>{{p.description}}</td>
+                        <td>
+                            <div *ngIf=" display ">
+                                <a class="btn-info btn btn-sm" [routerLink]="'/dashboard/home/admin-company/'+company.id+'/'+p.id+'/add-compte-comptable' " >Ajouter compte comptable</a>
+                            </div>
+                        </td>
+                        <td>
+                            
+                            <a class="btn-info btn btn-sm" [routerLink]="'/dashboard/home/admin-company/'+company.id+'/'+p.id+'/compte-details' " >Compte details</a>
+                        
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>

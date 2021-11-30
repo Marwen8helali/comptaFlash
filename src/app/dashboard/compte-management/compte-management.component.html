@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">compte details</h1>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/admin-employees" class="btn btn-primary">Retour</a>
+    </p>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> compte comptable </h6>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>designation</th>
+                    <th>apuremnet</th>
+                    <th>Ecriture(s)</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let c of compte">
+                        <td>{{c.id}}</td>
+                        <td>{{c.designation}}</td>
+                        <td>{{c.apurement}}</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let e of c.ecritures"><a [routerLink]="'/dashboard/home/admin-company/compte-details/list-operation/ecritrue/'+e.id">{{e.name}}</a></li>
+                            </ul>
+                        </td>
+                         <td >
+                            
+                            <a class="btn-info btn btn-sm" [routerLink]="'/dashboard/home/admin-company/compte-details/'+c.id " >Créer ecriture</a>
+                        
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+    
+    </div>

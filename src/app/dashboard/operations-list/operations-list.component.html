@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-body">
+                <div class="card" >
+                    <ul *ngFor="let o of operations" class="list-group list-group-flush" >
+                      <li class="list-group-item"><strong>N° piéce : </strong> {{o.numPiece}}</li>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <li class="list-group-item"><strong>date de création : </strong> {{o.createdAt | date}}</li>
+                            </div>
+                            <div class="col-sm-6">
+                                <li class="list-group-item"><strong>date : </strong>{{o.date | date}}</li>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <li class="list-group-item"><strong>libilee : </strong>{{o.libilee}}</li> 
+                            </div>
+                            <div class="col-sm-6">
+                                <li class="list-group-item"><strong>journal : </strong>{{o.journal}}</li> 
+                            </div>
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <table class="table">
+                <thead *ngFor="let o of operations">
+                    
+                        <th></th>
+                        <th>intitulé du compte</th>
+                        <th>type</th>
+                        <th>Montant</th>
+
+                    
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let o of operations">
+                        <td>{{o.id}}</td>
+                        
+                        <td>{{o.entitled}}</td>
+                        <td><span [ngClass]="o.type==0 ? 'badge bg-success text-white':'badge bg-danger text-white' ">{{o.type==0 ? 'Débit':'Crédit'}}</span></td>
+                        <td>{{o.amount | currency:'TND'}}</td>
+                        
+                    </tr>
+
+                    
+                </tbody>
+                
+            </table>
+            <hr>
+            <div  class="row">
+
+                <div class="col-sm-6">
+                    <td  class="text-center"><strong>Balance</strong></td>
+                </div>
+                <div class="col-sm-6">
+                    <td class="text-right"> <h3 style="margin-left: 152px;" >{{ calculBalance() | currency:'TND' }}</h3> </td>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

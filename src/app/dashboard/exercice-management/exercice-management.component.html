@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Exercice comptable</h1>
+    <p class="mb-4">
+        Le tableau ci-dessous présente une liste de tous les exercice comptable.
+    </p>
+    <div class="mb-4">
+
+        <div *ngIf=" display ">
+            <a routerLink="/dashboard/home/admin-exercice-add" class="btn btn-primary">Ajouter</a>
+        </div>
+    </div>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des periodes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Year</th>
+                            <th>Peridoe</th>
+                            <th>Companies</th>
+                            <th>Actions</th>
+                            
+                            
+
+                            
+                            
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                        <tr *ngFor="let p of exercices" >
+                            <td>{{p.idExercice}}</td>
+                            <td> <span class="badge bg-info text-white">{{p.year}}</span> </td>
+                            <td> <span class="badge text-white" [ngClass]=" p.periode.actif == true ? 'bg-success' : 'bg-danger' " >{{p.periode.actif == true ? 'activé' : 'désactivé'}}</span> </td>
+                            <td>
+                                <ul>
+                                    <li *ngFor="let c of p.company">
+
+                                        <a [routerLink]="'/dashboard/home/admin-company-details/'+c.id">{{c.email}}</a>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <a class="btn-info btn btn-sm" [routerLink]="'/dashboard/home/admin-company-add/'+p.idExercice" >Ajouter entreprise</a>
+                            </td>
+                        </tr>
+
+                        
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

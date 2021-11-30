@@ -1,0 +1,121 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Ajouter une nouvelle operation</h1>
+    <p class="mb-4">
+        <a routerLink="" class="btn btn-primary">Retour</a>
+    </p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between">
+            <div>
+
+                <h6 class="m-0 font-weight-bold text-primary">Ajout operation</h6>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <form [formGroup]="operation" (ngSubmit)="add()">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Entitled</label>
+                            <input type="text" class="form-control" formControlName="entitled">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">libilee</label>
+                            <input type="text" class="form-control" formControlName="libilee">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Num piece</label>
+                            <input type="number" class="form-control" formControlName="numPiece">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Date</label>
+                            <input type="date" class="form-control" formControlName="date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Journal</label>
+                            <input type="text" class="form-control" formControlName="journal">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div style="margin-top: 36px;" class="form-group d-flex">
+                            
+                            <div style="margin-right: 25px;">
+                                <input type="radio" value="0" formControlName="type">
+                                <label for="">Débit</label>
+                            </div>
+
+                            
+                            <div>
+                                <input type="radio" value="1"  formControlName="type">
+                            <label for="">Crédit</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                        <div class="form-group">
+                            <label >amount   </label>
+                           <div class="row"> 
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" formControlName="amount">
+                                </div>
+                                <div class="col-sm-4">
+                                    <span for="" style="margin-right: -24px;border-radius: inherit" class="input-group-text"> {{ operation.value.amount | currency :" "}}</span>
+                                    
+                                </div>
+                                <div class="col-sm-2">
+                                    <span style="border-radius: inherit;" class="input-group-text">TND</span>
+                                </div>
+                            </div>
+                        </div>
+                
+
+
+
+
+                <div class="form-group">
+                    <button  type="submit"
+                        [disabled]="! operation.valid" class="w-100 btn btn-primary btn-user btn-block">
+                        Créer maintenant
+                    </button>
+                </div>
+
+
+
+
+                <div class="form-group my-2" *ngIf="errMsg!=''">
+                    <div class="alert alert-danger">
+                        {{errMsg}}
+                    </div>
+                </div>
+                <div class="form-group my-2" *ngIf="successMsg!=''">
+                    <div class="alert alert-success">
+                        {{successMsg}}
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
